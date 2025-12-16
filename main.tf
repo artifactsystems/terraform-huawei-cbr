@@ -1,3 +1,7 @@
+################################################################################
+# CBR Module - Main Configuration
+################################################################################
+
 locals {
   create_vault               = var.create && var.create_vault
   create_policy              = var.create && var.create_policy
