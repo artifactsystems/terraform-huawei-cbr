@@ -2,6 +2,35 @@
 
 Terraform module which creates CBR (Cloud Backup and Recovery) resources on HuaweiCloud.
 
+## Usage
+
+```hcl
+module "cbr" {
+  source = "github.com/artifactsystems/terraform-huawei-cbr?ref=v1.0.0"
+
+  vault_name      = "my-backup-vault"
+  vault_type      = "disk"
+  protection_type = "backup"
+  vault_size      = 100
+  auto_expand     = true
+
+  volume_ids = [
+    "volume-id-1",
+    "volume-id-2"
+  ]
+
+  # Simple backup policy - daily backup at 2 AM
+  backup_cycle_interval = 1
+  execution_times        = ["02:00"]
+  backup_quantity       = 7 # Keep last 7 backups
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+```
+
 ## Features
 
 This module supports the following CBR features:
