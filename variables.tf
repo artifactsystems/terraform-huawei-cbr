@@ -200,6 +200,12 @@ variable "excluded_volume_ids" {
 # CBR Policy
 ################################################################################
 
+variable "policy_id" {
+  description = "ID of an existing CBR policy to attach to the vault. If provided, a new policy will not be created and policy configuration variables will be ignored"
+  type        = string
+  default     = null
+}
+
 variable "policy_name" {
   description = "Name of the backup policy"
   type        = string

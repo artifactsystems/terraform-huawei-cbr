@@ -42,12 +42,12 @@ output "vault_storage" {
 ################################################################################
 
 output "policy_id" {
-  description = "ID of the CBR policy"
-  value       = try(huaweicloud_cbr_policy.this[0].id, null)
+  description = "ID of the CBR policy (created or external)"
+  value       = local.policy_id
 }
 
 output "policy_name" {
-  description = "Name of the CBR policy"
+  description = "Name of the CBR policy (only available if policy was created by this module)"
   value       = try(huaweicloud_cbr_policy.this[0].name, null)
 }
 

@@ -40,6 +40,7 @@ This module supports the following CBR features:
 - ✅ **Multiple Vault Types**: Support for server, disk, turbo, workspace, vmware, and file vault types
 - ✅ **Protection Types**: Both backup and replication protection types
 - ✅ **Backup Policy**: Configurable backup policies with scheduling and retention
+- ✅ **Shared Policy Support**: Use a single policy across multiple vaults or attach existing policies
 - ✅ **Long-term Retention**: Advanced retention rules with daily/weekly/monthly/yearly backups
 - ✅ **Auto-expand**: Automatic vault capacity expansion when needed
 - ✅ **Multi-AZ**: Multi-availability zone backup support for high availability

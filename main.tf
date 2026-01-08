@@ -4,8 +4,11 @@
 
 locals {
   create_vault               = var.create && var.create_vault
-  create_policy              = var.create && var.create_policy
+  create_policy              = var.create && var.create_policy && var.policy_id == null
   create_organization_policy = var.create && var.create_organization_policy
+
+  # Policy ID - use provided external policy or the created one
+  policy_id = var.policy_id != null ? var.policy_id : try(huaweicloud_cbr_policy.this[0].id, null)
 
   # Policy name - use provided or generate from vault name
   policy_name = var.policy_name != null ? var.policy_name : "${var.vault_name}-policy"
@@ -56,9 +59,9 @@ resource "huaweicloud_cbr_vault" "this" {
   }
 
   dynamic "policy" {
-    for_each = local.create_policy && local.create_vault ? [1] : []
+    for_each = local.policy_id != null && local.create_vault ? [1] : []
     content {
-      id = huaweicloud_cbr_policy.this[0].id
+      id = local.policy_id
     }
   }
 
